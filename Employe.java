@@ -1,87 +1,104 @@
-import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
 public class Employe {
+  private int id;
+  private String nom;
+  private String poste;
+  private float salaire;
 
-    private Employe[] Employe = {
-        new Employe(id:Date.now(), nom:"Chirac",poste:"Formateur",salaire:500),
-        new Employe(id:Date.now(), nom:"Chirac",poste:"Formateur",salaire:500)
-    };
-    
-   private int ID = Date.now();
-   private String nom = "";
-   private  String poste;
-   private int salaire;
+  // Liste statique pour stocker les employés
+  private static List<Employe> employes = new ArrayList<>();
 
-    // Create a class constructor for the Main class
-  public Employe() {
-  System.out.println("Mon constructeur");  // Set the initial value for the class attribute x
+  // Create a class constructor for the Main class
+  public Employe(int id, String nom, String poste, float salaire) {
+
+    this.id = id;
+    this.nom = nom;
+    this.poste = poste;
+    this.salaire = salaire;
+
   }
-  
+
   // Getter
-  public String getId() {
-    return id                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ;
+  public int getId() {
+    return id;
   }
+
   public String getNom() {
     return nom;
   }
+
   public String getPoste() {
     return poste;
   }
-  public String getSalaire() {
+
+  public float getSalaire() {
     return salaire;
   }
 
-   // Setter
-   public void getId(String newId) {
-    this.id = newId; }
-   public void getNom(String newNom) {
-    this.nom = newNom; }
-  public void getPoste(String newPoste) {
-    this.poste = newPoste; }
-   public void getSalaire(String newSalaire) {
-  this.salaire = newSalaire; }
+  // Setter
+  public void setId(int id) {
+    this.id = id;
+  }
 
- public static void getAllEmployer(){
-    
-    for (int i = 0 ; i < Employe.length; i++){
-        System.out.println(Employe[i] + " ");
+  public void setNom(String nom) {
+    this.nom = nom;
+  }
+
+  public void setPoste(String poste) {
+    this.poste = poste;
+  }
+
+  public void setSalaire(float salaire) {
+    this.salaire = salaire;
+  }
+
+  // Méthode pour afficher tous les employés
+
+  public static void afficherEmployes() {
+
+    for (Employe e : employes) {
+      System.out.println(
+          "ID: " + e.getId() + ", Nom: " + e.getNom() + ", Poste: " + e.getPoste() + ", Salaire: " + e.getSalaire());
     }
- public static void getEmployerById(){
-       System.out.println();
+  }
+
+  // Méthode pour afficher un employé par ID
+  public static void afficherEmployeParId(int id) {
+    for (Employe e : employes) {
+      if (e.getId() == id) {
+        System.out.println(
+            "ID: " + e.getId() + ", Nom: " + e.getNom() + ", Poste: " + e.getPoste() + ", Salaire: " + e.getSalaire());
+        return;
+      }
     }
- public static void addEmployer(){
-        
-      for (int i : Employe) {
-         Employe.add(i);
-        }
+    System.out.println("Employé avec ID " + id + " non trouvé.");
+  }
 
-       System.out.println();
+  // Méthode pour ajouter un employé
+  public static void ajouterEmploye(int id, String nom, String poste, float salaire) {
+
+    employes.add(new Employe(id, nom, poste, salaire));
+  }
+
+  // Méthode pour supprimer un employé par ID
+
+  public static void supprimerEmploye(int id) {
+    employes.removeIf(e -> e.getId() == id);
+  }
+
+  // Méthode pour mettre à jour un employé
+  public static void mettreAJourEmploye(int id, String nom, String poste, float salaire) {
+    for (Employe e : employes) {
+      if (e.getId() == id) {
+        e.setNom(nom);
+        e.setPoste(poste);
+        e.setSalaire(salaire);
+        return;
+      }
     }
- public static void DeletedEmployer(){
-       System.out.println();
-    }
- public static void UpdateEmployer(){
-       System.out.println();
-    }
+    System.out.println("Employé avec ID " + id + " non trouvé.");
+  }
 
-  // Créer un objet Scanner pour lire l'entrée de l'utilisateur
-        Scanner scanner = new Scanner(System.in);
-
-        // Demander à l'utilisateur d'entrer un nombre
-        System.out.print("Entrez le nom de l'employer que vous recherchez ? ");
-        String nomRechercher = scanner.nextInt();
-
-        // Utiliser Arrays.binarySearch() pour rechercher le nom dans le tableau
-        String nom = Arrays.binarySearch(Employe, nomRechercher);
-
-        // Afficher le résultat de la recherche
-        if (nom >= 0) {
-            System.out.println("Index: " + nom);
-        } else {
-            System.out.println("L'élément n'est pas présent dans le tableau.");
-        }
-
-        // Fermer le scanner
-        scanner.close();
- }
- 
 }
