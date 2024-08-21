@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Employe {
 
     private Employe[] Employe = {
@@ -5,10 +6,7 @@ public class Employe {
         new Employe(id:Date.now(), nom:"Chirac",poste:"Formateur",salaire:500)
     };
 
-   private int ID = Date.now();
-   private String nom = "";
-   private  String poste;
-   private int salaire;
+
 
     // Create a class constructor for the Main class
   public Employe() {
@@ -17,7 +15,7 @@ public class Employe {
   
   // Getter
   public String getId() {
-    return ID;
+    return id                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ;
   }
   public String getNom() {
     return nom;
@@ -31,13 +29,13 @@ public class Employe {
 
    // Setter
    public void getId(String newId) {
-    this.type = newId; }
+    this.id = newId; }
    public void getNom(String newNom) {
-    this.type = newNom; }
+    this.nom = newNom; }
   public void getPoste(String newPoste) {
-    this.type = newPoste; }
+    this.poste = newPoste; }
    public void getSalaire(String newSalaire) {
-  this.type = newSalaire; }
+  this.salaire = newSalaire; }
 
  public static void getAllEmployer(){
        System.out.println();
@@ -46,6 +44,11 @@ public class Employe {
        System.out.println();
     }
  public static void addEmployer(){
+        
+      for (int i : Employe) {
+         Employe.add(i);
+        }
+
        System.out.println();
     }
  public static void DeletedEmployer(){
@@ -55,4 +58,23 @@ public class Employe {
        System.out.println();
     }
 
+  // Créer un objet Scanner pour lire l'entrée de l'utilisateur
+        Scanner scanner = new Scanner(System.in);
+
+        // Demander à l'utilisateur d'entrer un nombre
+        System.out.print("Entrez le nom de l'employer que vous recherchez ? ");
+        String nomRechercher = scanner.nextInt();
+
+        // Utiliser Arrays.binarySearch() pour rechercher le nom dans le tableau
+        String nom = Arrays.binarySearch(Employe, nomRechercher);
+
+        // Afficher le résultat de la recherche
+        if (nom >= 0) {
+            System.out.println("Index: " + nom);
+        } else {
+            System.out.println("L'élément n'est pas présent dans le tableau.");
+        }
+
+        // Fermer le scanner
+        scanner.close();
 }
