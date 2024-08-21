@@ -5,8 +5,11 @@ public class Employe {
         new Employe(id:Date.now(), nom:"Chirac",poste:"Formateur",salaire:500),
         new Employe(id:Date.now(), nom:"Chirac",poste:"Formateur",salaire:500)
     };
-
-
+    
+   private int ID = Date.now();
+   private String nom = "";
+   private  String poste;
+   private int salaire;
 
     // Create a class constructor for the Main class
   public Employe() {
