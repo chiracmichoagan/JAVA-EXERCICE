@@ -38,7 +38,9 @@ public class Employe {
   this.salaire = newSalaire; }
 
  public static void getAllEmployer(){
-       System.out.println();
+    
+    for (int i = 0 ; i < Employe.length; i++){
+        System.out.println(Employe[i] + " ");
     }
  public static void getEmployerById(){
        System.out.println();
@@ -77,4 +79,6 @@ public class Employe {
 
         // Fermer le scanner
         scanner.close();
+ }
+ 
 }
